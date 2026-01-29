@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #eef2f5;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card */
+.login-card {
+  width: 360px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* Header */
+.card-header {
+  background: #0d2c54;
+  color: white;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  background: white;
+  color: #0d2c54;
+  font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 50%;
+}
+
+.company-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Body */
+.card-body {
+  padding: 25px;
+  text-align: center;
+}
+
+.card-body h2 {
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.input-box {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.input-box i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px 10px 10px 38px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+/* Button */
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background: #0d2c54;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-btn:hover {
+  background: #123a6f;
+}
+
+/* Forgot */
+.forgot {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #0d2c54;
+  text-decoration: none;
+}
