@@ -1,14 +1,17 @@
-const mongoose = require("mongoose");
+const express = require("express");
+const connectDB = require("./db"); // or db1
+require("dotenv").config();
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log("MongoDB Connected");
-  } catch (error) {
-    console.error("MongoDB connection failed:", error.message);
-    process.exit(1);
-  }
-};
+const app = express();
+app.use(express.json());
 
-module.exports = connectDB;
+connectDB();
 
+app.get("/", (req, res) => {
+  res.send("HRMS Backend Running");
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
