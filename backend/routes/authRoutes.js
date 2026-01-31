@@ -1,31 +1,31 @@
 const express = require("express");
-const bcrypt = require("bcryptjs");
+const router = express.Router();
 const User = require("../models/User");
 
-const router = express.Router();
+// LOGIN ROUTE
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-/* REGISTER */
-router.post("/register", async (req, res) => {
-  const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({ message: "All fields required" });
+    }
 
-  // check user exists
-  const existingUser = await User.findOne({ email });
-  if (existingUser) {
-    return res.json({ message: "User already exists" });
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    if (user.password !== password) {
+      return res.status(401).json({ message: "Invalid password" });
+    }
+
+    res.json({ message: "Login successful" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
-
-  // encrypt password
-  // const hashedPassword = await bcrypt.hash(password, 10);
-
-  // save to DB
-  const user = new User({
-    email,
-    password,
-  });
-
-  await user.save();
-
-  res.json({ message: "User registered successfully" });
 });
 
 module.exports = router;

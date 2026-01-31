@@ -10,11 +10,8 @@ app.use(express.json());
 
 connectDB();
 
-app.use("/", authRoutes);
+app.use("/api/auth", authRoutes);
 
-const PORT = process.env.PORT || 3003;
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
 });
-
